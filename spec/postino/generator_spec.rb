@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Postino::Generator do
   describe '.generate_form' do
     let(:form) do
-      Postino::Form.new do |f|
+      Postino::Form.new.tap do |f|
         f.account_number = '1234567890'
         f.numeric_amount = 11111
         f.text_amount    = 'UNDICIMILACENTOUNDICI/00'
@@ -11,7 +11,7 @@ describe Postino::Generator do
         f.reason         = 'LOREM IPSUM DOLOR SIT AMET, ADIPISCING CONSECTETUR ELIT.'
         f.payer_name     = 'MARIO ROSSI DI MONTEBIANCO'
 
-        f.address.configure do |a|
+        f.address.tap do |a|
           a.street   = 'VIA FASULLA, 123'
           a.zip_code = '00100'
           a.city     = 'ROMA'

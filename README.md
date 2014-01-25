@@ -20,7 +20,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-Postino::Form.new do |f|
+Postino::Form.new.tap do |f|
   f.account_number = '0123456789'
   f.numeric_amount = 11111
   f.text_amount = 'UNDICIMILACENTOUNDICI/00'
@@ -28,7 +28,7 @@ Postino::Form.new do |f|
   f.reason = 'LOREM IPSUM DOLOR SIT AMET, ADIPISCING CONSECTETUR ELIT'
   f.payer_name = 'MARIO ROSSI'
 
-  f.address.configure do |a|
+  f.address.tap do |a|
     a.street = 'VIA FASULLA, 123'
     a.zip_code = '00100'
     a.city = 'ROMA'
