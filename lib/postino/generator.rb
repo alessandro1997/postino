@@ -14,6 +14,21 @@ module Postino
       ADDRESS_ZIP_CODE_COORDINATES = [[60, 92], [540, 80]]
       ADDRESS_LOCATION_COORDINATES = [[60, 77], [615, 80]]
 
+      # Generates a new postal payment form.
+      #
+      # @param path    [String] The target path
+      # @param options [Hash]   A hash of options. Valid options are:
+      #   :account_number [String]
+      #   :text_amount    [String]
+      #   :numeric_amount [Numeric]
+      #   :company_name   [String]
+      #   :reason         [String]
+      #   :payer_name     [String]
+      #   :address        [Hash]
+      #     :street   [String]
+      #     :zip_code [String]
+      #     :city     [String]
+      #     :state    [String]
       def generate_form(path, options = {})
         options = normalize_options(options)
         options[:address] = normalize_options(options[:address])
