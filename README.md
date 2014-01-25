@@ -1,4 +1,4 @@
-# Postino [![Gem Version](https://badge.fury.io/rb/postino.png)](http://badge.fury.io/rb/postino) [![Build Status](https://travis-ci.org/alessandro1997/postino.png?branch=master)](https://travis-ci.org/alessandro1997/postino) [![Dependency Status](https://gemnasium.com/alessandro1997/postino.png)](https://gemnasium.com/alessandro1997/postino)
+# Postino [![Gem Version](https://badge.fury.io/rb/postino.png)](http://badge.fury.io/rb/postino) [![Build Status](https://travis-ci.org/alessandro1997/postino.png?branch=master)](https://travis-ci.org/alessandro1997/postino) [![Dependency Status](https://gemnasium.com/alessandro1997/postino.png)](https://gemnasium.com/alessandro1997/postino) [![Code Climate](https://codeclimate.com/github/alessandro1997/postino.png)](https://codeclimate.com/github/alessandro1997/postino)
 
 [Postino](https://github.com/alessandro1997/postino) is a Ruby gem that allows to quickly generate Italian postal
 payment forms in PDF format using [Prawn](https://github.com/prawnpdf/prawn).
