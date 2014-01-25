@@ -7,7 +7,7 @@ describe Postino::Generator do
         Postino::Generator.generate_form(File.expand_path('../form.pdf', __FILE__), {
           account_number: '0123456789',
           numeric_amount: 11111,
-          text_amount: 'UNDICI MILIONI CENTOUNDICIMILA/00',
+          text_amount: 'UNDICIMILACENTOUNDICI/00',
           company_name: 'ACME SRL',
           reason: 'LOREM IPSUM DOLOR SIT AMET, ADIPISCING CONSECTETUR ELIT',
           payer_name: 'MARIO ROSSI',
