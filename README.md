@@ -20,20 +20,21 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-Postino::Generator.generate_form('form.pdf', {
-  account_number: '0123456789',
-  numeric_amount: 11111,
-  text_amount: 'UNDICIMILACENTOUNDICI/00',
-  company_name: 'ACME SRL',
-  reason: 'LOREM IPSUM DOLOR SIT AMET, ADIPISCING CONSECTETUR ELIT',
-  payer_name: 'MARIO ROSSI',
-  address: {
-    street: 'VIA FASULLA, 123',
-    zip_code: '00100',
-    city: 'ROMA',
-    state: 'RM'
-  }
-})
+Postino::Form.new do |f|
+  f.account_number = '0123456789'
+  f.numeric_amount = 11111
+  f.text_amount = 'UNDICIMILACENTOUNDICI/00'
+  f.company_name = 'ACME SRL'
+  f.reason = 'LOREM IPSUM DOLOR SIT AMET, ADIPISCING CONSECTETUR ELIT'
+  f.payer_name = 'MARIO ROSSI'
+
+  f.address.configure do |a|
+    a.street = 'VIA FASULLA, 123'
+    a.zip_code = '00100'
+    a.city = 'ROMA'
+    a.state = 'RM'
+  end
+end.generate('my_form.pdf')
 ```
 
 ## Contributing
