@@ -16,85 +16,106 @@ module Postino
 
       # Generates a new postal payment form.
       #
-      # @param path    [String] The target path
-      # @param options [Hash]   A hash of options. Valid options are:
-      #   :account_number [String]
-      #   :text_amount    [String]
-      #   :numeric_amount [Numeric]
-      #   :company_name   [String]
-      #   :reason         [String]
-      #   :payer_name     [String]
-      #   :address        [Hash]
-      #     :street   [String]
-      #     :zip_code [String]
-      #     :city     [String]
-      #     :state    [String]
-      def generate_form(path, options = {})
-        options = normalize_options(options)
-        options[:address] = normalize_options(options[:address])
+      # @param path [String]        The target path
+      # @param form [Postino::Form] The form model
+      def generate_form(path, form)
+        Prawn::Document.generate(path, template: TEMPLATE_PATH, margin: 0) do |pdf|
+          pdf.font 'Courier'
+          pdf.font_size 11
 
-        Prawn::Document.generate(path, template: TEMPLATE_PATH, skip_page_creation: true, margin: 0) do
-          font 'Courier'
-          font_size 11
-
-          ACCOUNT_NUMBER_COORDINATES.each do |coordinates|
-            text_box options[:account_number], at: coordinates, character_spacing: 6
-          end
-
-          TEXT_AMOUNT_COORDINATES.each do |coordinates|
-            text_box options[:text_amount], at: coordinates
-          end
-
-          numeric_amount = ('%.2f' % options[:numeric_amount]).gsub('.', '')
-          numeric_amount_y = 363 - 13 * numeric_amount.length
-
-          [
-            [numeric_amount_y, 257],
-            [numeric_amount_y + 473, 257]
-          ].each do |coordinates|
-            text_box numeric_amount, at: coordinates, character_spacing: 6
-          end
-
-          text_box options[:company_name], at: COMPANY_NAME_COORDINATES[0]
-          text_box options[:company_name], at: COMPANY_NAME_COORDINATES[1], character_spacing: 6
-
-          bounding_box(REASON_COORDINATES[0], width: 300, height: 100) do
-            text_box options[:reason]
-          end
-
-          bounding_box(REASON_COORDINATES[1], width: 400, height: 100) do
-            text_box options[:reason]
-          end
-
-          bounding_box(PAYER_NAME_COORDINATES[0], width: 180, height: 100) do
-            text_box options[:payer_name]
-          end
-
-          bounding_box(PAYER_NAME_COORDINATES[1], width: 300, height: 100) do
-            text_box options[:payer_name], character_spacing: 6
-          end
-
-          text_box options[:address][:street], at: ADDRESS_STREET_COORDINATES[0], width: 130, height: 10, size: 9, overflow: :truncate
-          text_box options[:address][:street], at: ADDRESS_STREET_COORDINATES[1], width: 300, height: 10, character_spacing: 6, overflow: :truncate
-
-          text_box options[:address][:zip_code], at: ADDRESS_ZIP_CODE_COORDINATES[0], size: 9
-          text_box options[:address][:zip_code], at: ADDRESS_ZIP_CODE_COORDINATES[1], character_spacing: 6
-
-          location = "#{options[:address][:city]} (#{options[:address][:state]})"
-
-          text_box location, at: ADDRESS_LOCATION_COORDINATES[0], width: 200, height: 10, size: 9, overflow: :truncate
-          text_box location, at: ADDRESS_LOCATION_COORDINATES[1], width: 200, height: 10, character_spacing: 6, overflow: :truncate
+          add_account_number(pdf, form)
+          add_text_amount(pdf, form)
+          add_numeric_amount(pdf, form)
+          add_payee_name(pdf, form)
+          add_reason(pdf, form)
+          add_payer_name(pdf, form)
+          add_address(pdf, form)
         end
       end
 
-      private
+      protected
 
-        def normalize_options(options)
-          options.each do |key, value|
-            value.upcase! if value.is_a?(String)
+        def add_account_number(pdf, form)
+          ACCOUNT_NUMBER_COORDINATES.each do |coordinates|
+            pdf.text_box form.account_number, at: coordinates, character_spacing: 6
+          end
+        end
+
+        def add_text_amount(pdf, form)
+          TEXT_AMOUNT_COORDINATES.each do |coordinates|
+            pdf.text_box form.text_amount, at: coordinates
+          end
+        end
+
+        def add_numeric_amount(pdf, form)
+          numeric_amount = ('%.2f' % form.numeric_amount).gsub('.', '')
+          numeric_amount_y = 363 - 13 * numeric_amount.length
+
+          [[numeric_amount_y, 257], [numeric_amount_y + 473, 257]].each do |coordinates|
+            pdf.text_box numeric_amount, at: coordinates, character_spacing: 6
+          end
+        end
+
+        def add_payee_name(pdf, form)
+          pdf.text_box form.payee_name, at: COMPANY_NAME_COORDINATES[0], width: 300
+          pdf.text_box form.payee_name, at: COMPANY_NAME_COORDINATES[1], character_spacing: 6
+        end
+
+        def add_reason(pdf, form)
+          pdf.bounding_box(REASON_COORDINATES[0], width: 300, height: 100) do
+            pdf.text_box form.reason
           end
 
-          options
+          pdf.bounding_box(REASON_COORDINATES[1], width: 400, height: 100) do
+            pdf.text_box form.reason
+          end
+        end
+
+        def add_payer_name(pdf, form)
+          pdf.bounding_box(PAYER_NAME_COORDINATES[0], width: 180, height: 100) do
+            pdf.text_box form.payer_name
+          end
+
+          pdf.bounding_box(PAYER_NAME_COORDINATES[1], width: 300, height: 100) do
+            pdf.text_box form.payer_name, character_spacing: 5.7, height: 100, overflow: :truncate
+          end
+        end
+
+        def add_address(pdf, form)
+          pdf.text_box(form.address.street,
+            at:       ADDRESS_STREET_COORDINATES[0],
+            width:    130,
+            height:   10,
+            size:     9,
+            overflow: :truncate
+          )
+
+          pdf.text_box(form.address.street,
+            at:                ADDRESS_STREET_COORDINATES[1],
+            width:             300,
+            height:            10,
+            character_spacing: 6,
+            overflow:          :truncate
+          )
+
+          pdf.text_box form.address.zip_code, at: ADDRESS_ZIP_CODE_COORDINATES[0], size: 9
+          pdf.text_box form.address.zip_code, at: ADDRESS_ZIP_CODE_COORDINATES[1], character_spacing: 6
+
+          pdf.text_box(form.address.location,
+            at:       ADDRESS_LOCATION_COORDINATES[0],
+            width:    200,
+            height:   10,
+            size:     9,
+            overflow: :truncate
+          )
+
+          pdf.text_box(form.address.location,
+            at:                ADDRESS_LOCATION_COORDINATES[1],
+            width:             200,
+            height:            10,
+            character_spacing: 6,
+            overflow:          :truncate
+          )
         end
     end
   end
