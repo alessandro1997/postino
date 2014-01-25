@@ -24,7 +24,7 @@ Postino::Form.new do |f|
   f.account_number = '0123456789'
   f.numeric_amount = 11111
   f.text_amount = 'UNDICIMILACENTOUNDICI/00'
-  f.company_name = 'ACME SRL'
+  f.payee_name = 'ACME SRL'
   f.reason = 'LOREM IPSUM DOLOR SIT AMET, ADIPISCING CONSECTETUR ELIT'
   f.payer_name = 'MARIO ROSSI'
 
