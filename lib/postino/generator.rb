@@ -9,6 +9,10 @@ module Postino
       TEXT_AMOUNT_COORDINATES = [[515, 243], [87, 243]]
       REASON_COORDINATES = [[32, 180], [400, 180]]
       PAYER_NAME_COORDINATES = [[32, 138], [541, 143]]
+      COMPANY_NAME_COORDINATES = [[32, 220], [397, 220]]
+      ADDRESS_STREET_COORDINATES = [[60, 107], [540, 105]]
+      ADDRESS_ZIP_CODE_COORDINATES = [[60, 92], [540, 80]]
+      ADDRESS_LOCATION_COORDINATES = [[60, 77], [615, 80]]
 
       def generate_form(path, options = {})
         options = normalize_options(options)
@@ -36,8 +40,8 @@ module Postino
             text_box numeric_amount, at: coordinates, character_spacing: 6
           end
 
-          text_box options[:company_name], at: [32, 220]
-          text_box options[:company_name], at: [397, 220], character_spacing: 6
+          text_box options[:company_name], at: COMPANY_NAME_COORDINATES[0]
+          text_box options[:company_name], at: COMPANY_NAME_COORDINATES[1], character_spacing: 6
 
           bounding_box(REASON_COORDINATES[0], width: 300, height: 100) do
             text_box options[:reason]
@@ -55,16 +59,16 @@ module Postino
             text_box options[:payer_name], character_spacing: 6
           end
 
-          text_box options[:address][:street], at: [60, 107], width: 130, height: 10, size: 9, overflow: :truncate
-          text_box options[:address][:street], at: [540, 105], width: 300, height: 10, character_spacing: 6, overflow: :truncate
+          text_box options[:address][:street], at: ADDRESS_STREET_COORDINATES[0], width: 130, height: 10, size: 9, overflow: :truncate
+          text_box options[:address][:street], at: ADDRESS_STREET_COORDINATES[1], width: 300, height: 10, character_spacing: 6, overflow: :truncate
 
-          text_box options[:address][:zip_code], at: [60, 92], size: 9
-          text_box options[:address][:zip_code], at: [540, 80], character_spacing: 6
+          text_box options[:address][:zip_code], at: ADDRESS_ZIP_CODE_COORDINATES[0], size: 9
+          text_box options[:address][:zip_code], at: ADDRESS_ZIP_CODE_COORDINATES[1], character_spacing: 6
 
           location = "#{options[:address][:city]} (#{options[:address][:state]})"
 
-          text_box location, at: [60, 77], width: 200, height: 10, size: 9, overflow: :truncate
-          text_box location, at: [615, 80], width: 200, height: 10, character_spacing: 6, overflow: :truncate
+          text_box location, at: ADDRESS_LOCATION_COORDINATES[0], width: 200, height: 10, size: 9, overflow: :truncate
+          text_box location, at: ADDRESS_LOCATION_COORDINATES[1], width: 200, height: 10, character_spacing: 6, overflow: :truncate
         end
       end
 
