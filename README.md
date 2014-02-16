@@ -7,15 +7,21 @@ payment forms in PDF format using [Prawn](https://github.com/prawnpdf/prawn).
 
 Add this line to your application's Gemfile:
 
-```gem 'postino'```
+```ruby
+gem 'postino'
+```
 
 And then execute:
 
-```$ bundle```
+```console
+$ bundle
+```
 
 Or install it yourself as:
 
-```$ gem install postino```
+```console
+$ gem install postino
+```
 
 ## Usage
 
