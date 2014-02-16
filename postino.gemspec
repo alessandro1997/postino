@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Postino::VERSION
   spec.authors       = ["Alessandro Desantis"]
   spec.email         = ["desa.alessandro@gmail.com"]
-  spec.summary       = %q{A gem to generate Italian postal payment forms.}
-  spec.description   = %q{Postino is a gem that allows to generate Italian postal payment forms in PDF format using Prawn.}
-  spec.homepage      = "https://github.com/alessandro1997/postino"
+  spec.summary       = %q{A Ruby library to generate Italian postal payment forms.}
+  spec.description   = %q{Postinoallows you to generate Italian postal payment forms in PDF format using Prawn.}
+  spec.homepage      = "https://github.com/interconn-wisp/postino"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

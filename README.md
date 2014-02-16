@@ -1,6 +1,6 @@
-# Postino [![Gem Version](https://badge.fury.io/rb/postino.png)](http://badge.fury.io/rb/postino) [![Build Status](https://travis-ci.org/alessandro1997/postino.png?branch=master)](https://travis-ci.org/alessandro1997/postino) [![Dependency Status](https://gemnasium.com/alessandro1997/postino.png)](https://gemnasium.com/alessandro1997/postino) [![Code Climate](https://codeclimate.com/github/alessandro1997/postino.png)](https://codeclimate.com/github/alessandro1997/postino)
+# Postino [![Gem Version](https://badge.fury.io/rb/postino.png)](http://badge.fury.io/rb/postino) [![Build Status](https://travis-ci.org/interconn-wisp/postino.png?branch=master)](https://travis-ci.org/interconn-wisp/postino) [![Dependency Status](https://gemnasium.com/interconn-wisp/postino.png)](https://gemnasium.com/interconn-wisp/postino) [![Code Climate](https://codeclimate.com/github/interconn-wisp/postino.png)](https://codeclimate.com/github/interconn-wisp/postino)
 
-[Postino](https://github.com/alessandro1997/postino) is a Ruby gem that allows to quickly generate Italian postal
+[Postino](https://github.com/interconn-wisp/postino) is a Ruby gem that allows to quickly generate Italian postal
 payment forms in PDF format using [Prawn](https://github.com/prawnpdf/prawn).
 
 ## Installation
@@ -45,7 +45,7 @@ end.generate('my_form.pdf')
 
 ## Contributing
 
-1. [Fork it](http://github.com/alessandro1997/postino/fork)
+1. [Fork it](http://github.com/interconn-wisp/postino/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
