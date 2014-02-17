@@ -1,5 +1,4 @@
 require 'prawn'
-require 'prawn/templates'
 
 module Postino
   class Generator
