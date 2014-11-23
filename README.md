@@ -2,8 +2,8 @@
 
 **DISCONTINUED: [prawn-templates](https://github.com/prawnpdf/prawn-templates)
 is not maintained anymore, so this gem has been discontinued.
-[Bollettino](https://github.com/interconn-isp/bollettino) is the successor to
-Postino and generates PNGs instead of PDFs.**
+[Bollettino](https://github.com/interconn-isp/bollettino) is its successor and
+generates PNGs instead of PDFs.**
 
 [![Gem Version](https://badge.fury.io/rb/postino.png)](http://badge.fury.io/rb/postino)
 [![Build Status](https://travis-ci.org/interconn-isp/postino.png?branch=master)](https://travis-ci.org/interconn-isp/postino)
