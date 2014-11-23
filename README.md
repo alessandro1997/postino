@@ -1,9 +1,17 @@
-**DISCONTINUED** (See [Bollettino](https://github.com/interconn-isp/bollettino) instead.)
+# Postino
 
-# Postino [![Gem Version](https://badge.fury.io/rb/postino.png)](http://badge.fury.io/rb/postino) [![Build Status](https://travis-ci.org/interconn-wisp/postino.png?branch=master)](https://travis-ci.org/interconn-wisp/postino) [![Dependency Status](https://gemnasium.com/interconn-wisp/postino.png)](https://gemnasium.com/interconn-wisp/postino) [![Code Climate](https://codeclimate.com/github/interconn-wisp/postino.png)](https://codeclimate.com/github/interconn-wisp/postino)
+**DISCONTINUED: [prawn-templates](https://github.com/prawnpdf/prawn-templates)
+is not maintained anymore, so this gem has been discontinued.
+[Bollettino](https://github.com/interconn-isp/bollettino) is the successor to
+Postino and generates PNGs instead of PDFs.**
 
-[Postino](https://github.com/interconn-wisp/postino) is a Ruby gem that allows to quickly generate Italian postal
-payment forms in PDF format using [Prawn](https://github.com/prawnpdf/prawn).
+[![Gem Version](https://badge.fury.io/rb/postino.png)](http://badge.fury.io/rb/postino)
+[![Build Status](https://travis-ci.org/interconn-isp/postino.png?branch=master)](https://travis-ci.org/interconn-isp/postino)
+[![Dependency Status](https://gemnasium.com/interconn-isp/postino.png)](https://gemnasium.com/interconn-isp/postino)
+[![Code Climate](https://codeclimate.com/github/interconn-isp/postino.png)](https://codeclimate.com/github/interconn-isp/postino)
+
+Postino is a Ruby gem that allows to quickly generate Italian postal payment
+forms in PDF format using [Prawn](https://github.com/prawnpdf/prawn).
 
 ## Installation
 
@@ -47,7 +55,7 @@ end.generate('my_form.pdf')
 
 ## Contributing
 
-1. [Fork it](http://github.com/interconn-wisp/postino/fork)
+1. [Fork it](http://github.com/interconn-isp/postino/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
