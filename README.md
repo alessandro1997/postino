@@ -1,3 +1,5 @@
+**DISCONTINUED** (See [Bollettino](https://github.com/interconn-isp/bollettino) instead.)
+
 # Postino [![Gem Version](https://badge.fury.io/rb/postino.png)](http://badge.fury.io/rb/postino) [![Build Status](https://travis-ci.org/interconn-wisp/postino.png?branch=master)](https://travis-ci.org/interconn-wisp/postino) [![Dependency Status](https://gemnasium.com/interconn-wisp/postino.png)](https://gemnasium.com/interconn-wisp/postino) [![Code Climate](https://codeclimate.com/github/interconn-wisp/postino.png)](https://codeclimate.com/github/interconn-wisp/postino)
 
 [Postino](https://github.com/interconn-wisp/postino) is a Ruby gem that allows to quickly generate Italian postal
